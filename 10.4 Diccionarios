@@ -1,0 +1,77 @@
+print("\n=== Librería Online A ===")
+
+class Tienda:
+    def __init__(self):
+        self.catalogo = {
+            1: {"titulo": "Pedro Páramo", "precio": 220.0},
+            2: {"titulo": "El principito", "precio": 180.0},
+            3: {"titulo": "Cien años de soledad", "precio": 350.0},
+            4: {"titulo": "Don Quijote", "precio": 400.0},
+            5: {"titulo": "Hábitos Atómicos", "precio": 299.0}
+        }
+
+    def agregar(self, titulo, precio):
+        # TODO:
+        # 1. Obtener el siguiente ID disponible.
+        # 2. Agregar el libro al catálogo.
+        pass
+
+    def buscarLibro(self, id_libro):
+        # TODO:
+        # Verificar si el ID existe en el catálogo.
+        # Si existe, mostrar el título y precio.
+        # Si no existe, mostrar un mensaje de error.
+        pass
+
+    def mostrar(self):
+        # TODO:
+        # Recorrer el diccionario e imprimir
+        # ID, título y precio de cada libro.
+        pass
+
+    def totalInventario(self):
+        # TODO:
+        # Crear una variable acumuladora.
+        # Recorrer el catálogo.
+        # Sumar cada precio.
+        # Regresar el total.
+        pass
+
+    # Reto opcional
+    def eliminar(self, id_libro):
+        # TODO:
+        # Eliminar un libro utilizando pop().
+        pass
+
+
+# Programa principal
+
+t = Tienda()
+
+print("\n--- Catálogo Inicial ---")
+t.mostrar()
+
+# Buscar un libro
+id_libro = int(input("\nDa el ID del libro a buscar: "))
+t.buscarLibro(id_libro)
+
+# Mostrar total del inventario
+print("\nTotal del inventario: $", t.totalInventario())
+
+# Agregar un libro
+print("\n--- Agregar Libro ---")
+
+titulo = input("Ingrese el título del libro: ")
+precio = float(input("Ingrese el precio del libro: "))
+
+t.agregar(titulo, precio)
+
+print("\n--- Catálogo Actualizado ---")
+t.mostrar()
+
+print("\nTotal del inventario: $", t.totalInventario())
+
+# Reto opcional
+# id_eliminar = int(input("\nDa el ID del libro a eliminar: "))
+# t.eliminar(id_eliminar)
+# t.mostrar()
