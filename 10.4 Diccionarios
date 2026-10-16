@@ -13,6 +13,7 @@ class Tienda:
     def agregar(self, titulo, precio):
         # TODO:
         # 1. Obtener el siguiente ID disponible.
+        idLibro = max(self.catalogo.keys()) + 1
         # 2. Agregar el libro al catálogo.
         pass
 
