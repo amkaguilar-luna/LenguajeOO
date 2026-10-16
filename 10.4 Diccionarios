@@ -20,6 +20,7 @@ class Tienda:
     def buscarLibro(self, id_libro):
         # TODO:
         # Verificar si el ID existe en el catálogo.
+        if id_libro in self.catalogo:
         # Si existe, mostrar el título y precio.
         # Si no existe, mostrar un mensaje de error.
         pass
