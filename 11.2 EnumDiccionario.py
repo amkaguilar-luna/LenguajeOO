@@ -1,16 +1,20 @@
 from enum import Enum, unique
-
 # ==============================================================================
 # 1. CATÁLOGO SEGURO CON ENUMS (Llaves constantes e inmutables)
 # ==============================================================================
-# TODO: Coloca el decorador oficial para evitar la duplicidad de valores (alias)
+# TODO: Coloca aquí el decorador oficial que garantiza que no existan valores duplicados (alias).
+# Pista: Inicia con el símbolo '@'.
 [ ]
-class TipoPersonaje(Enum):
-    GUERRERO = 1
-    MAGO = 2
-    ARQUERO = 3
 
-
+# TODO: Declara la clase 'TipoPersonaje' asegurando que herede de la clase 'Enum'.
+class TipoPersonaje([ ]):
+    # TODO: Registre las 3 constantes del catálogo con sus identificadores numéricos:
+    # 1. GUERRERO asignado al valor 1
+    # 2. MAGO asignado al valor 2
+    # 3. ARQUERO asignado al valor 3
+    [ ] = 1
+    [ ] = 2
+    [ ] = 3
 # ==============================================================================
 # 2. BASE DE DATOS COMPLEMENTARIA (Diccionario de Atributos Auxiliares)
 # ==============================================================================
