@@ -1,10 +1,10 @@
 from enum import Enum, unique
 
 # ==============================================================================
-# 1. CATALOGO SEGURO CON ENUMS (Llaves constantes)
+# 1. CATÁLOGO SEGURO CON ENUMS (Llaves constantes e inmutables)
 # ==============================================================================
-# TODO: Coloca el decorador para evitar duplicados y completa las constantes del Enum
-@unique
+# TODO: Coloca el decorador oficial para evitar la duplicidad de valores (alias)
+[ ]
 class TipoPersonaje(Enum):
     GUERRERO = 1
     MAGO = 2
@@ -12,9 +12,8 @@ class TipoPersonaje(Enum):
 
 
 # ==============================================================================
-# 2. BASE DE DATOS COMPLEMENTARIA (Diccionario de Atributos)
+# 2. BASE DE DATOS COMPLEMENTARIA (Diccionario de Atributos Auxiliares)
 # ==============================================================================
-# TODO: Completa el diccionario vinculando los Enums con sus estadísticas base
 atributosPersonajes = {
     TipoPersonaje.GUERRERO: {"vida": 150, "ataque": 35},
     TipoPersonaje.MAGO:     {"vida": 80,  "ataque": 60},
@@ -29,50 +28,95 @@ class Personaje:
     def __init__(self, nombre, rol):
         self.nombre = nombre
         
-        # TODO: Valida con un 'if' si la variable 'rol' es una instancia de 'TipoPersonaje'
-        if isinstance(rol, TipoPersonaje):
+        # TODO: Valida si la variable recibida 'rol' es una instancia de la clase 'TipoPersonaje'
+        if isinstance([ ], [ ]):
             self.rol = rol
             
-            # TODO: Usa el 'rol' aprobado como llave para extraer los datos del diccionario 'atributosPersonajes'
-            # Guarda la información en variables internas usando camelCase
-            datosBase = atributosPersonajes[rol]
-            self.vidaActual = datosBase["vida"]
-            self.ataqueBase = datosBase["ataque"]
+            # TODO: Extrae el diccionario interno de estadísticas usando la variable 'rol' como llave
+            datosBase = atributosPersonajes[ ]
+            
+            # TODO: Asigna a los atributos del objeto la "vida" y el "ataque" correspondientes de datosBase
+            self.vidaActual = [ ]
+            self.ataqueBase = [ ]
         else:
-            # Si no es un Enum válido, levantamos una excepción para destruir la instancia corrupta
-            raise ValueError(f"Error Crítico: El rol '{rol}' no existe en el catálogo de personajes.")
+            # TODO: Lanza una excepción ValueError con un mensaje descriptivo si el rol es inválido
+            [ ]
 
     def mostrarEstadisticas(self):
-        # TODO: Imprime los datos usando .name para ver la constante en texto plano
-        print(f"Héroe: {self.nombre} | Clase: {self.rol.name}")
-        print(f" -> Vida: {self.vidaActual} HP | Daño: {self.ataqueBase} pts\n")
+        # TODO: Imprime en consola el nombre del héroe, el nombre del rol (usando .name) 
+        # y las estadísticas de salud actual y daño base.
+        pass
+
+    def recibirDanio(self, puntos):
+        print(f"💥 ¡{self.nombre} recibe un impacto de {puntos} puntos de daño!")
+        
+        # TODO: Resta la variable 'puntos' a la propiedad de salud actual de este personaje
+        [ ]
+        
+        # TODO: Desarrolla la validación lógica para que si la vida actual cae por debajo o igual a cero,
+        # se nivele estrictamente en cero y se notifique en pantalla que el personaje cayó en combate.
+        if [ ]:
+            [ ]
+            print(f"💀 {self.nombre} ha caído en combate.\n")
+        else:
+            print(f"❤️ Vida restante de {self.nombre}: {self.vidaActual} HP\n")
 
 
 # ==============================================================================
-# 4. FLUJO PRINCIPAL DE PRUEBAS (Corrida de Consola sin funciones def)
+# 4. FLUJO PRINCIPAL INTERACTIVO (Corrida de Consola Simulada)
 # ==============================================================================
-print("=== Caso 1: Creación Segura usando Enum ===")
+
+# --- PASO 1: Mostrar el catálogo de personajes disponibles por primera vez ---
+print("==================================================")
+print("===      CATÁLOGO DE PERSONAJES DISPONIBLES    ===")
+print("==================================================")
+# TODO: Completa el ciclo for para que recorra de forma automática la estructura 'TipoPersonaje'
+for rolActual in [ ]:
+    datosRol = atributosPersonajes[rolActual]
+    print(f"[{rolActual.value}] {rolActual.name:<10} | Vida: {datosRol['vida']} HP | Daño: {datosRol['ataque']} pts")
+print("==================================================\n")
+
+
+# TODO: Inicia un bloque de control de excepciones para prevenir caídas catastróficas del programa
 try:
-    # TODO: Pasa la constante del Enum en el segundo argumento para crear al Guerrero
-    heroeIncial = Personaje("Aragorn", TipoPersonaje.GUERRERO)
-    heroeIncial.mostrarEstadisticas()
-except ValueError as error:
-    print(error)
+    # --- PASO 2: Preguntar al usuario qué personaje quiere elegir ---
+    seleccionUsuario = input("Digita el número de la clase que deseas elegir para tu héroe: ")
+    
+    # TODO: Convierte la entrada 'seleccionUsuario' a un número entero
+    numeroClase = [ ]
+    
+    # TODO: Mapea directamente el 'numeroClase' al Enum 'TipoPersonaje' para validar la opción
+    rolElegido = TipoPersonaje([ ]) 
+    
+    nombreHeroe = input("Escribe el nombre de tu personaje: ")
+    print("\n--- ¡Personaje Creado con Éxito! ---")
+    
+    # TODO: Instancia el objeto de la clase Personaje usando las variables correspondientes
+    heroeUsuario = Personaje([ ], [ ])
+    heroeUsuario.mostrarEstadisticas()
+    
+    # --- PASO 3: Generar el enemigo fijo (Un Mago) para el combate ---
+    print("--- ¡Un enemigo ha aparecido! ---")
+    enemigoMago = Personaje("Mago Oscuro", TipoPersonaje.MAGO)
+    enemigoMago.mostrarEstadisticas()
+    
+    print("==================================================")
+    print("===             FASE DE COMBATE                ===")
+    print("==================================================")
+    
+    # --- PASO 4: Preguntar el impacto y validar que esté dentro de lo permitido ---
+    entradaImpacto = input(f"Ingresa los puntos de daño que deseas causarle a {enemigoMago.nombre}: ")
+    puntosImpacto = int(entradaImpacto)
+    
+    # TODO: Desarrolla la condicional que verifique si los 'puntosImpacto' son un valor negativo
+    if [ ]:
+        print("❌ Error: No se permiten impactos con valores negativos. El ataque ha fallado.")
+    else:
+        # TODO: Invoca el método pertinente para aplicarle los 'puntosImpacto' al objeto 'enemigoMago'
+        [ ]
 
+# TODO: Define la excepción específica que debe capturar el bloque cuando el usuario ingresa datos erróneos
+except [ ]:
+    print("\n❌ Entrada Inválida: Asegúrate de seleccionar una opción correcta del menú y usar números válidos para el daño.")
 
-print("=== Caso 2: Intento de Creación Incorrecta usando un String genérico ===")
-try:
-    # ERROR INTENCIONAL: El programador pasa un texto libre "MAGO" en vez del Enum
-    # TODO: Ejecuta el código para observar cómo la validación detiene la ejecución
-    heroeErroneo = Personaje("Gandalf", "MAGO")
-    heroeErroneo.mostrarEstadisticas()
-except ValueError as error:
-    print(f"Fallo controlado exitosamente -> {error}\n")
-
-
-print("=== Caso 3: Recorrido Completo del Diccionario Mixto ===")
-# TODO: Completa el ciclo para listar en consola todos los roles y sus daños base
-for rolActual in atributosPersonajes:
-    # Pista: Accede al diccionario usando 'rolActual' y busca la clave de daño
-    danoBase = atributosPersonajes[rolActual]["ataque"]
-    print(f"Clase Disponible: {rolActual.name:<10} | Daño Estándar: {danoBase} pts")
+print("\n[Sistema]: Simulación interactiva finalizada.")
